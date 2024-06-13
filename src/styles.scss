@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import "_css-reset.css";
+
+// Variables for global style guide
+:root {
+  --bp-mobile: 400px;
+
+  --fs-main: 1rem;
+  --fs-detail: 1rem;
+
+  --fw-regular: 300;
+  --fw-bold: 600;
+  --fw-fat: 800;
+
+  --ff-text: 'Nunito Sans', sans-serif;
+
+  // Dark Blue (Dark Mode Elements)
+  --clr-neutral-100: 209, 23%, 22%;
+  // Very Dark Blue (Dark Mode Background)
+  --clr-neutral-200: 207, 26%, 17%;
+  // Very Dark Blue (Light Mode Text)
+  --clr-neutral-300: 200, 15%, 8%;
+  // Dark Gray (Light Mode Input)
+  --clr-neutral-400: 0, 0%, 98%;
+  // Very Light Gray (Light Mode Background)
+  --clr-neutral-500: 0, 0%, 98%;
+  // White (Dark Mode Text & Light Mode Elements)
+  --clr-neutral-600: 0, 0%, 100%;
+
+  --clr-neutral-100-hsl: hsl(var(--clr-neutral-100));
+  --clr-neutral-200-hsl: hsl(var(--clr-neutral-200));
+  --clr-neutral-300-hsl: hsl(var(--clr-neutral-300));
+  --clr-neutral-400-hsl: hsl(var(--clr-neutral-400));
+  --clr-neutral-500-hsl: hsl(var(--clr-neutral-500));
+  --clr-neutral-600-hsl: hsl(var(--clr-neutral-600));
+}
+
+body {
+  font-family: var(--ff-text);
+  font-size: var(--fs-main);
+  font-weight: var(--fw-regular);
+}
