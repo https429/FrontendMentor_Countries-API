@@ -18,12 +18,13 @@
   --clr-dark-background: hsl(207, 26%, 17%);
 
   --clr-light-text: hsl(200, 15%, 8%);
+  --clr-light-text-trans: hsl(200, 15%, 8%, .5);
   --clr-light-elements: hsl(0, 0%, 100%);
   --clr-light-background: hsl(0, 0%, 95%);
-  --clr-light-accent: hsl(0, 0%, 92%);
+  --clr-light-accent: hsl(0, 0%, 90%);
   --clr-light-input: hsl(0, 0%, 98%);
 
-  --clr-light-shadow: hsl(0, 0%, 0%, .2)
+  --clr-light-shadow: hsl(0, 0%, 0%, .1)
 }
 
 // RESET
@@ -53,5 +54,9 @@ body {
 
   background: var(--clr-light-background);
   min-height: 100dvh;
+}
+
+.shadow {
+  box-shadow: 0 .25rem .5rem var(--clr-light-shadow);
 }
 

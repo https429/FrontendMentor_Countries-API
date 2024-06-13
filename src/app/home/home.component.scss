@@ -1,0 +1,56 @@
+$border-radius: .5rem;
+$padding: .75rem 1.75rem;
+
+section {
+  margin: 2rem 0;
+}
+
+.search {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 1rem 5rem;
+
+  &-input {
+    background: var(--clr-light-elements);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    column-gap: 1rem;
+
+    padding: $padding;
+    border-radius: $border-radius;
+
+    min-width: 25rem;
+
+    i {
+      color: var(--clr-light-text-trans);
+    }
+
+    input {
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+  }
+
+  select {
+    border: none;
+    outline: none;
+    background: var(--clr-light-elements);
+
+    border-radius: $border-radius;
+    padding: $padding;
+
+    option {
+      font-family: inherit;
+    }
+
+  }
+}
+
+.countries {
+
+}

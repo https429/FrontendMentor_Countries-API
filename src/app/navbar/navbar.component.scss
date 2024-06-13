@@ -9,7 +9,7 @@ nav {
   align-items: center;
   gap: 2rem;
 
-  box-shadow: 0 0 1rem var(--clr-light-shadow);
+  margin-bottom: 2rem;
 
   .page-title {
     color: inherit;
@@ -27,13 +27,15 @@ nav {
     gap: 1rem;
 
     background: var(--clr-light-elements);
-    border: 0;
+    border: none;
+    outline: none;
     border-radius: .25rem;
     padding: .5rem;
 
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background: var(--clr-light-accent);
     }
 
