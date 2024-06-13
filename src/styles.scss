@@ -1,11 +1,11 @@
-@import "_css-reset.css";
-
-// Variables for global style guide
 :root {
   --bp-mobile: 400px;
 
+  --pd-inline: 5rem;
+
   --fs-main: 1rem;
   --fs-detail: 1rem;
+  --fs-title: 1.5rem;
 
   --fw-regular: 300;
   --fw-bold: 600;
@@ -13,29 +13,45 @@
 
   --ff-text: 'Nunito Sans', sans-serif;
 
-  // Dark Blue (Dark Mode Elements)
-  --clr-neutral-100: 209, 23%, 22%;
-  // Very Dark Blue (Dark Mode Background)
-  --clr-neutral-200: 207, 26%, 17%;
-  // Very Dark Blue (Light Mode Text)
-  --clr-neutral-300: 200, 15%, 8%;
-  // Dark Gray (Light Mode Input)
-  --clr-neutral-400: 0, 0%, 98%;
-  // Very Light Gray (Light Mode Background)
-  --clr-neutral-500: 0, 0%, 98%;
-  // White (Dark Mode Text & Light Mode Elements)
-  --clr-neutral-600: 0, 0%, 100%;
+  --clr-dark-text: hsl(0, 0%, 100%);
+  --clr-dark-elements: hsl(209, 23%, 22%);
+  --clr-dark-background: hsl(207, 26%, 17%);
 
-  --clr-neutral-100-hsl: hsl(var(--clr-neutral-100));
-  --clr-neutral-200-hsl: hsl(var(--clr-neutral-200));
-  --clr-neutral-300-hsl: hsl(var(--clr-neutral-300));
-  --clr-neutral-400-hsl: hsl(var(--clr-neutral-400));
-  --clr-neutral-500-hsl: hsl(var(--clr-neutral-500));
-  --clr-neutral-600-hsl: hsl(var(--clr-neutral-600));
+  --clr-light-text: hsl(200, 15%, 8%);
+  --clr-light-elements: hsl(0, 0%, 100%);
+  --clr-light-background: hsl(0, 0%, 95%);
+  --clr-light-accent: hsl(0, 0%, 92%);
+  --clr-light-input: hsl(0, 0%, 98%);
+
+  --clr-light-shadow: hsl(0, 0%, 0%, .2)
 }
 
+// RESET
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+
+// GENERIC
 body {
   font-family: var(--ff-text);
   font-size: var(--fs-main);
   font-weight: var(--fw-regular);
+
+  background: var(--clr-light-background);
+  min-height: 100dvh;
 }
+
