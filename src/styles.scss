@@ -5,6 +5,7 @@
 
   --fs-main: 1rem;
   --fs-detail: 1rem;
+  --fs-heading: 1.125rem;
   --fs-title: 1.5rem;
 
   --fw-regular: 300;
@@ -58,5 +59,9 @@ body {
 
 .shadow {
   box-shadow: 0 .25rem .5rem var(--clr-light-shadow);
+}
+
+.hidden {
+  display: none;
 }
 

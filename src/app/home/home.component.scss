@@ -1,8 +1,9 @@
 $border-radius: .5rem;
 $padding: .75rem 1.75rem;
+$min-width: 20rem;
 
 section {
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 
 .search {
@@ -23,7 +24,8 @@ section {
     padding: $padding;
     border-radius: $border-radius;
 
-    min-width: 25rem;
+    width: 25rem;
+    min-width: $min-width;
 
     i {
       color: var(--clr-light-text-trans);
@@ -51,6 +53,30 @@ section {
   }
 }
 
-.countries {
+.country {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 2.5rem;
 
+  &-item {
+    background: var(--clr-light-elements);
+
+    min-width: $min-width;
+    height: 22rem;
+    flex-grow: 1;
+    flex-basis: 0;
+
+    border-radius: $border-radius;
+
+    &-body {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: var(--fs-heading);
+        font-weight: var(--fw-bold);
+      }
+
+    }
+  }
 }
