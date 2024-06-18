@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {CountryDTO, CountryService, Region} from "../service/country.service";
 import {Observable} from "rxjs";
 import {AsyncPipe} from "@angular/common";
+import {CountryItemComponent} from "../country-item/country-item.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    CountryItemComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

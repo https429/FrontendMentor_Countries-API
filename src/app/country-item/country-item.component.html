@@ -1,0 +1,26 @@
+@if (country != null) {
+  <div class="country-item shadow">
+    <div class="country-item-flag">
+      <img [src]="country.flags.svg" alt="Flag of {{country.name.common}}"/>
+    </div>
+
+    <div class="country-item-body">
+      <h3>{{ country.name.common }}</h3>
+
+      <ul>
+        <li>
+          <strong>Population</strong>
+          <span>{{ country.population | number }}</span>
+        </li>
+        <li>
+          <strong>Region</strong>
+          <span>{{ country.region }}</span>
+        </li>
+        <li>
+          <strong>Capital</strong>
+          <span>{{ country.capital }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+}

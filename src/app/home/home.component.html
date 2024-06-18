@@ -18,16 +18,10 @@
   </select>
 </section>
 
-<section class="country">
+<section class="country-list">
   @for (country of countryList$ | async; track country.name) {
-
-    <div class="country-item shadow">
-      <span>{{ country.flags.svg }}</span>
-
-      <div class="country-item-body">
-        <h3>{{ country.name.common }}</h3>
-
-      </div>
+    <div class="country-list-item-wrapper">
+      <app-country-item [country]="country"></app-country-item>
     </div>
   }
 </section>
