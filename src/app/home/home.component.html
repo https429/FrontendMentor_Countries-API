@@ -1,21 +1,28 @@
 <h2 class="hidden">All Countries</h2>
 
-<section class="search">
-  <div class="search-input shadow">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <input
-      type="text"
-      placeholder="Search for a country..."
-    />
-  </div>
+<section>
+  <form class="search" [formGroup]="filterForm">
+    <div class="search-input shadow">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        placeholder="Search for a country..."
+        formControlName="searchInput"
+      />
+    </div>
 
-  <select class="shadow">
-    <option selected disabled hidden>Filter by Region</option>
+    <select class="shadow"
+            formControlName="regionSelect">
+      <option selected disabled hidden
+              [ngValue]="NOT_SELECTED"
+      >Filter by Region
+      </option>
 
-    @for (region of regionList$ | async; track $index) {
-      <option>{{ region }}</option>
-    }
-  </select>
+      @for (region of regionList$ | async; track $index) {
+        <option [ngValue]="region">{{ region }}</option>
+      }
+    </select>
+  </form>
 </section>
 
 <section class="country-list">
@@ -23,5 +30,9 @@
     <div class="country-list-item-wrapper">
       <app-country-item [country]="country"></app-country-item>
     </div>
+  } @empty {
+    <span class="country-list-empty">
+      No Countries Available
+    </span>
   }
 </section>

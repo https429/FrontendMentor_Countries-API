@@ -61,7 +61,27 @@ export class CountryService {
           params: {fields: this.FIELDS.join(',')}
         })
       .pipe(
-        map(countryList => countryList.sort((a, b) => a.name.common.localeCompare(b.name.common))),
+        map(countryList => countryList.sort(this.countryCompare)),
       )
+  }
+
+  getCountriesByName(name: string): Observable<CountryDTO[]> {
+    name = name.trim()
+    if (name.length == 0) {
+      return this.getAllCountries()
+    }
+
+    return this.http
+      .get<CountryDTO[]>(
+        `${this.BASE_URL}/name/${name}`, {
+          params: {fields: this.FIELDS.join(',')}
+        })
+      .pipe(
+        map(countryList => countryList.sort(this.countryCompare))
+      )
+  }
+
+  private countryCompare(a: CountryDTO, b: CountryDTO): number {
+    return a.name.common.localeCompare(b.name.common)
   }
 }
