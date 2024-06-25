@@ -65,15 +65,15 @@ export class CountryService {
       )
   }
 
-  getCountriesByName(name: string): Observable<CountryDTO[]> {
-    name = name.trim()
-    if (name.length == 0) {
+  getCountriesByRegion(region: string): Observable<CountryDTO[]> {
+    region = region.trim();
+    if (region.length == 0) {
       return this.getAllCountries()
     }
 
     return this.http
       .get<CountryDTO[]>(
-        `${this.BASE_URL}/name/${name}`, {
+        `${this.BASE_URL}/region/${region}`, {
           params: {fields: this.FIELDS.join(',')}
         })
       .pipe(
