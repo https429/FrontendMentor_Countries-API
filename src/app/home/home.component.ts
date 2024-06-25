@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CountryDTO, CountryService, Region} from "../service/country.service";
-import {distinctUntilChanged, map, Observable, startWith, switchMap} from "rxjs";
+import {distinctUntilChanged, map, Observable, startWith, Subscription, switchMap} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import {CountryItemComponent} from "../country-item/country-item.component";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+
+type ButtonState = 'active' | 'inactive'
 
 @Component({
   selector: 'app-home',
@@ -16,13 +18,17 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = []
   protected readonly NOT_SELECTED: string = 'NOT_SELECTED'
 
   regionList$!: Observable<Region[]>
   countryList$!: Observable<CountryDTO[]>
 
   filterForm: FormGroup
+
+  searchInputClearState: ButtonState = "inactive"
+  regionSelectClearState: ButtonState = "inactive"
 
   constructor(private countryService: CountryService,
               private fb: FormBuilder) {
@@ -54,15 +60,36 @@ export class HomeComponent implements OnInit {
               map(search => {
                 const searchStr = search.trim()
                 return searchStr.length > 0
-                  ? this.searchCountries(searchStr, countryList)
+                  ? this.filterCountries(searchStr, countryList)
                   : countryList
               })
             )
         )
       )
+
+    this.subscriptions.push(
+      this.searchInput.valueChanges.subscribe(value =>
+        this.searchInputClearState = value ? 'active' : 'inactive'
+      ))
+    this.subscriptions.push(
+      this.regionSelect.valueChanges.subscribe(value =>
+        this.regionSelectClearState = value != this.NOT_SELECTED ? 'active' : 'inactive'
+      ))
   }
 
-  private searchCountries(searchStr: string, countryList: CountryDTO[]): CountryDTO[] {
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe())
+  }
+
+  resetSearchInput(): void {
+    this.searchInput.setValue('')
+  }
+
+  resetRegionSelect(): void {
+    this.regionSelect.setValue(this.NOT_SELECTED)
+  }
+
+  private filterCountries(searchStr: string, countryList: CountryDTO[]): CountryDTO[] {
     return countryList.filter(country =>
       country.name.common.includes(searchStr)
     )

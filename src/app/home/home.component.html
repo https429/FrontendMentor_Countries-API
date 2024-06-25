@@ -3,25 +3,37 @@
 <section>
   <form class="search" [formGroup]="filterForm">
     <div class="search-input shadow">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass background-icon"></i>
       <input
         type="text"
         placeholder="Search for a country..."
         formControlName="searchInput"
       />
+      <button class="icon-button"
+              [attr.data-state]="searchInputClearState"
+              (click)="resetSearchInput()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
-    <select class="shadow"
-            formControlName="regionSelect">
-      <option selected disabled hidden
-              [ngValue]="NOT_SELECTED"
-      >Filter by Region
-      </option>
+    <div class="search-region shadow">
+      <!-- TODO: Der Clear Button soll auf die rechte Seite verschoben werden -->
+      <button class="icon-button"
+              [attr.data-state]="regionSelectClearState"
+              (click)="resetRegionSelect()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <select formControlName="regionSelect">
+        <option selected disabled hidden
+                [ngValue]="NOT_SELECTED"
+        >Filter by Region
+        </option>
 
-      @for (region of regionList$ | async; track $index) {
-        <option [ngValue]="region">{{ region }}</option>
-      }
-    </select>
+        @for (region of regionList$ | async; track $index) {
+          <option [ngValue]="region">{{ region }}</option>
+        }
+      </select>
+    </div>
   </form>
 </section>
 
