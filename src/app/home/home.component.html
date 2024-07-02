@@ -30,7 +30,7 @@
         </option>
 
         @for (region of regionList$ | async; track $index) {
-          <option [ngValue]="region">{{ region }}</option>
+          <option [ngValue]="region.toLowerCase()">{{ region }}</option>
         }
       </select>
     </div>
