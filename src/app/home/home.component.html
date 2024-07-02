@@ -1,13 +1,14 @@
 <h2 class="hidden">All Countries</h2>
 
 <section>
-  <form class="search" [formGroup]="filterForm">
+  <form class="search" [formGroup]="filterForm" (submit)="$event.preventDefault()">
     <div class="search-input shadow">
       <i class="fa-solid fa-magnifying-glass background-icon"></i>
       <input
         type="text"
         placeholder="Search for a country..."
         formControlName="searchInput"
+        (keydown.enter)="$event.preventDefault()"
       />
       <button class="icon-button"
               [attr.data-state]="searchInputClearState"
