@@ -127,7 +127,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       relativeTo: this.route,
       preserveFragment: true,
       queryParams: queryParams,
-    })
+    }).then()
   }
 
   private filterCountries(searchStr: string, countryList: CountryDTO[]): CountryDTO[] {

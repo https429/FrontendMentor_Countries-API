@@ -1,7 +1,8 @@
 @if (country != null) {
-  <div class="country-item shadow">
+  <div class="country-item shadow"
+    (click)="navigateToDetail()">
     <div class="country-item-flag">
-      <img [src]="country.flags.svg" alt="Flag of {{country.name.common}}"/>
+      <img [src]="country.flags.svg" [alt]="country.flags.alt"/>
     </div>
 
     <div class="country-item-body">

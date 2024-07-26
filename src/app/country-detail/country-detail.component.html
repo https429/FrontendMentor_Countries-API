@@ -1,0 +1,43 @@
+<section class="backlink">
+  <button class="shadow" (click)="navigateBack()">
+    <i class="fa-solid fa-arrow-left"></i>
+    Back
+  </button>
+</section>
+
+@if (countryDTO$ | async; as country) {
+  <section class="country">
+    <div class="country-flag">
+      <img [src]="country.flags.svg" [alt]="country.flags.alt"/>
+    </div>
+
+    <div class="country-detail">
+      <div class="country-detail-head">
+        <h1>{{ country.name.common }}</h1>
+      </div>
+
+      <div class="country-detail-properties">
+
+        @for (item of getCountryPropertiesMap(country).entries(); track item[0]) {
+          <div>
+            <strong>{{ item[0] }}</strong>
+            <span>{{ item[1] }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="country-detail-footer">
+        <strong>Border Countries</strong>
+
+        <div class="country-detail-footer-button-holder">
+          @for (cca3Code of country.borders; track cca3Code) {
+            <button class="shadow" (click)="navigateToCountry(cca3Code)">
+              {{ countryService.convertCCA3CodeToOfficialName(cca3Code) }}
+            </button>
+          }
+        </div>
+
+      </div>
+    </div>
+  </section>
+}
